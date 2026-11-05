@@ -24,6 +24,14 @@
 - [ ] Configure production signing securely
 - [ ] Create and verify a production release APK
 
+## Self-hosted server preparation
+- [x] Add Oracle Cloud WireGuard server installation script
+- [x] Add client peer/profile helper for controlled testing
+- [x] Document Always Free eligibility checks and UDP ingress requirements
+- [ ] User creates an Always Free-eligible OCI VM and opens UDP 51820
+- [ ] Install server and create a client profile
+- [ ] Import profile into Claude VPN and perform physical-device tests
+
 ## Explicit limitations
 No server fleet, free server credentials, or provider API is included. Without authorized server endpoints, this app cannot independently provide free VPN service. The debug APK is not a production release.
 
