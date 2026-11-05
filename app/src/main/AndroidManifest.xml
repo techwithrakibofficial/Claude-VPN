@@ -2,6 +2,6 @@
  <uses-permission android:name="android.permission.INTERNET" />
  <application android:allowBackup="false" android:label="Claude VPN" android:theme="@android:style/Theme.Material.NoActionBar" android:usesCleartextTraffic="false">
   <activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
-  <service android:name=".ClaudeVpnTileService" android:label="Claude VPN" android:icon="@android:drawable/ic_lock_lock" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true"><intent-filter><action android:name="android.service.quicksettings.action.QS_TILE"/></intent-filter></service>
+  <service android:name=".ClaudeVpnTileService" android:label="Claude VPN" android:icon="@android:drawable/ic_lock_lock" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true"><intent-filter><action android:name="android.service.quicksettings.action.QS_TILE"/></intent-filter><meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true"/><meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true"/></service>
  </application>
 </manifest>
