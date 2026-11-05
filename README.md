@@ -19,6 +19,9 @@ No VPN servers, server credentials, or provider API are bundled. The app can onl
 
 Never import leaked credentials or use servers without authorization. Do not commit WireGuard profiles or private keys to this repository.
 
+## Self-hosted WireGuard test server
+A starter Oracle Cloud Always Free deployment guide and server scripts are available in [`server/README.md`](server/README.md). This creates one self-managed endpoint for testing; it does not provide a global VPN fleet or automatic multi-user provisioning. Verify OCI Always Free eligibility before creating resources, and never commit generated private keys or client profiles.
+
 ## Build
 GitHub Actions runs `:app:assembleDebug` on pushes to `main` and uploads `claude-vpn-debug-apk` as a workflow artifact.
 
