@@ -13,7 +13,8 @@ object VpnController {
  @Volatile private var state: Tunnel.State = Tunnel.State.DOWN
  @Volatile private var lastError: String? = null
 
- val tunnel: Tunnel = object : Tunnel() {
+ val tunnel: Tunnel = object : Tunnel {
+  override fun getName(): String = "claude-vpn"
   override fun onStateChange(newState: Tunnel.State) { state = newState }
  }
 
