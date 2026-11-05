@@ -30,6 +30,8 @@ jobs:
         run: |
           yes | sdkmanager --licenses || true
           sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - name: Validate WireGuard server scripts
+        run: bash -n server/setup-wireguard.sh server/add-peer.sh
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
