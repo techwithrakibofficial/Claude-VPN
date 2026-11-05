@@ -1,12 +1,12 @@
 package com.techwithrakib.claudevpn
 
 import android.app.Activity
+import android.app.StatusBarManager
 import android.content.ComponentName
 import android.graphics.drawable.Icon
 import android.net.VpnService
 import android.os.Build
 import android.os.Bundle
-import android.service.quicksettings.TileService
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -116,16 +116,18 @@ class MainActivity : ComponentActivity() {
    message = "Open Quick Settings, tap Edit, then add the Claude VPN tile."
    return
   }
-  TileService.requestAddTileService(
+  val statusBar = getSystemService(StatusBarManager::class.java)
+  if (statusBar == null) { message = "Quick Settings tile API is unavailable on this device."; return }
+  statusBar.requestAddTileService(
    ComponentName(this, ClaudeVpnTileService::class.java),
    "Claude VPN",
    Icon.createWithResource(this, android.R.drawable.ic_lock_lock),
    { command -> runOnUiThread(command) }
   ) { result ->
    message = when (result) {
-    TileService.TILE_ADD_REQUEST_RESULT_TILE_ADDED -> "Quick Settings tile added."
-    TileService.TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED -> "Quick Settings tile is already added."
-    TileService.TILE_ADD_REQUEST_RESULT_TILE_NOT_ADDED -> "Tile was not added."
+    StatusBarManager.TILE_ADD_REQUEST_RESULT_TILE_ADDED -> "Quick Settings tile added."
+    StatusBarManager.TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED -> "Quick Settings tile is already added."
+    StatusBarManager.TILE_ADD_REQUEST_RESULT_TILE_NOT_ADDED -> "Tile was not added."
     else -> "Quick Settings tile request could not be completed."
    }
   }
